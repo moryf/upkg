@@ -17,16 +17,14 @@ public class ProjectOperation {
     @JoinColumn(name = "position")
     private Position position;
 
-    @ManyToOne
-    @JoinColumn(name = "state")
+    @Enumerated(EnumType.STRING)
     private ProjectState state;
 
     @ManyToOne
     @JoinColumn(name = "worker")
     private Worker worker;
 
-    @ManyToOne
-    @JoinColumn(name = "type")
+    @Enumerated(EnumType.STRING)
     private OperationType type;
 
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")

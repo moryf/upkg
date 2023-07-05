@@ -19,29 +19,25 @@ public class ProjectExpense {
     @JoinColumn(name = "operation")
     private ProjectOperation operation;
 
-    @ManyToOne
-    @JoinColumn(name = "type")
-    private ExpenseType type;
 
     private float value;
 
     public ProjectExpense() {
     }
 
-    public ProjectExpense(int id, Project project, Position position, ProjectOperation operation, ExpenseType type, float value) {
+    public ProjectExpense(int id, Project project, Position position, ProjectOperation operation, float value) {
         this.id = id;
         this.project = project;
         this.position = position;
         this.operation = operation;
-        this.type = type;
+
         this.value = value;
     }
 
-    public ProjectExpense(Project project, Position position, ProjectOperation operation, ExpenseType type, float value) {
+    public ProjectExpense(Project project, Position position, ProjectOperation operation, float value) {
         this.project = project;
         this.position = position;
         this.operation = operation;
-        this.type = type;
         this.value = value;
     }
 
@@ -77,13 +73,6 @@ public class ProjectExpense {
         this.operation = operation;
     }
 
-    public ExpenseType getType() {
-        return type;
-    }
-
-    public void setType(ExpenseType type) {
-        this.type = type;
-    }
 
     public float getValue() {
         return value;
@@ -100,7 +89,6 @@ public class ProjectExpense {
                 ", project=" + project +
                 ", position=" + position +
                 ", operation=" + operation +
-                ", type=" + type +
                 ", value=" + value +
                 '}';
     }

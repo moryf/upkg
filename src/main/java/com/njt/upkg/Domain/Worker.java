@@ -13,8 +13,7 @@ public class Worker {
     private String phone;
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "type")
+    @Enumerated(EnumType.STRING)
     private WorkerType type;
 
     private float pricePerHour;

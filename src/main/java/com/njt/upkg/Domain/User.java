@@ -1,7 +1,6 @@
 package com.njt.upkg.Domain;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @Entity
 @Table(name = "users")
@@ -16,8 +15,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "role")
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     public User() {

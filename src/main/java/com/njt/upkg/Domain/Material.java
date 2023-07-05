@@ -9,8 +9,7 @@ public class Material {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "type")
+    @Enumerated(EnumType.STRING)
     private MaterialType type;
 
     private int inDepo;
@@ -19,8 +18,7 @@ public class Material {
     private boolean zinked;
     private boolean painted;
 
-    @ManyToOne
-    @JoinColumn(name = "measuring_unit")
+    @Enumerated(EnumType.STRING)
     private MeasuringUnit measuringUnit;
 
     private float price;

@@ -2,6 +2,9 @@ package com.njt.upkg.Domain;
 
 import jakarta.persistence.*;
 
+/**
+ * Provera javadoc  u intellij
+ */
 @Entity
 @Table(name = "buyers")
 public class Buyer {
