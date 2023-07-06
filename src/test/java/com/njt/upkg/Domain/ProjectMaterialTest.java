@@ -9,8 +9,8 @@ public class ProjectMaterialTest {
     public void testGettersAndSetters() {
         ProjectMaterial projectMaterial = new ProjectMaterial();
 
-        projectMaterial.setId(1);
-        assertEquals(1, projectMaterial.getId());
+        projectMaterial.setId(1L);
+        assertEquals(1L, projectMaterial.getId());
 
         Project project = new Project();
         projectMaterial.setProject(project);
@@ -32,8 +32,8 @@ public class ProjectMaterialTest {
     public void testIllegalArgumentExceptionInSetId() {
         ProjectMaterial projectMaterial = new ProjectMaterial();
 
-        assertThrows(IllegalArgumentException.class, () -> projectMaterial.setId(0));
-        assertThrows(IllegalArgumentException.class, () -> projectMaterial.setId(-1));
+        assertThrows(IllegalArgumentException.class, () -> projectMaterial.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> projectMaterial.setId(-1L));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class ProjectMaterialTest {
         Position position = new Position();
         Material material = new Material();
 
-        ProjectMaterial projectMaterial = new ProjectMaterial(1, project, position, material, 10);
+        ProjectMaterial projectMaterial = new ProjectMaterial(1L, project, position, material, 10);
 
         String expectedToString = "ProjectMaterial{id=1, project=" + project + ", position=" + position +
                 ", material=" + material + ", amount=10}";

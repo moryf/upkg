@@ -13,11 +13,11 @@ import jakarta.persistence.*;
 @Entity
 public class Project {
     /**
-     * id Projekta kao int
+     * id Projekta kao Long
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Naziv projekta kao String
      */
@@ -100,7 +100,7 @@ public class Project {
      * @param createdBy kreator projekta
      * @param state     stanje projekta
      */
-    public Project(int id, String name, Date start, Date deadline, Buyer buyer, float value, User createdBy, ProjectState state) {
+    public Project(Long id, String name, Date start, Date deadline, Buyer buyer, float value, User createdBy, ProjectState state) {
         super();
         setId(id);
         setName(name);
@@ -114,9 +114,9 @@ public class Project {
 
     /**
      * Vraca id projekta
-     * @return id projekta kao int
+     * @return id projekta kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -125,7 +125,7 @@ public class Project {
      * @param id id projekta
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

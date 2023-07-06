@@ -12,11 +12,11 @@ import java.util.Date;
 @Entity
 public class ProjectOperation {
     /**
-     * id Operacije kao int
+     * id Operacije kao Long
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Projekat na kome se radi operacije klase {@link Project}
      * @see Project
@@ -55,7 +55,7 @@ public class ProjectOperation {
     /**
      * Datum zavrsetka operacije
      */
-    @Column(nullable = false,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date ended;
     /**
      * Da li se operacija trenutno radi
@@ -83,7 +83,7 @@ public class ProjectOperation {
      * @see Worker
      * @see OperationType
      */
-    public ProjectOperation(int id, Project project, Position position, Worker worker, OperationType type, Date start, Date ended, boolean active) {
+    public ProjectOperation(Long id, Project project, Position position, Worker worker, OperationType type, Date start, Date ended, boolean active) {
         super();
         setProject(project);
         setId(id);
@@ -122,18 +122,18 @@ public class ProjectOperation {
 
     /**
      * Vraca id operacije
-     * @return id operacije kao int
+     * @return id operacije kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Postavlja id operacije
-     * @param id novi id kao int
+     * @param id novi id kao Long
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

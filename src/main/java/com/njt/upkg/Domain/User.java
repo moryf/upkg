@@ -11,11 +11,11 @@ import jakarta.persistence.*;
 @Table(name = "users")
 public class User {
     /**
-     * id korisnika kao int
+     * id korisnika kao Long
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      *  korsinicko ime
      */
@@ -47,7 +47,7 @@ public class User {
      * @param role uloga kao {@link Role}
      * @see Role
      */
-    public User(int id, String username, String password, Role role) {
+    public User(Long id, String username, String password, Role role) {
         super();
         setId(id);
         setUsername(username);
@@ -70,18 +70,18 @@ public class User {
 
     /**
      * Vraca id korisnika
-     * @return id korisnika kao int
+     * @return id korisnika kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Postavlja id korisnika
-     * @param id id korisnika kao int
+     * @param id id korisnika kao Long
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

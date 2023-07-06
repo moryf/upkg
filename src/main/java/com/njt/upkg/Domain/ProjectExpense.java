@@ -9,11 +9,11 @@ import jakarta.persistence.*;
 @Entity
 public class ProjectExpense {
     /**
-     * id Troska kao int
+     * id Troska kao Long
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Projekat kome trosak pripada klase {@link Project}
      * @see Project
@@ -58,7 +58,7 @@ public class ProjectExpense {
      * @see Position
      * @see ProjectOperation
      */
-    public ProjectExpense(int id, Project project, Position position, ProjectOperation operation, float value) {
+    public ProjectExpense(Long id, Project project, Position position, ProjectOperation operation, float value) {
         super();
         setId(id);
         setProject(project);
@@ -87,18 +87,18 @@ public class ProjectExpense {
 
     /**
      * Vraca id troska
-     * @return id troska kao int
+     * @return id troska kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Postavlja id troska
-     * @param id id troska kao int
+     * @param id id troska kao Long
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

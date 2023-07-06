@@ -13,7 +13,7 @@ public class Material {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Ime materijala
      */
@@ -78,7 +78,7 @@ public class Material {
      * @param measuringUnit merna jedinica koja se koristi za materijal
      * @param price cena materijala po jedinici mere
      */
-    public Material(int id, String name, MaterialType type, int inDepo, float weight, float area, boolean zinked, boolean painted, MeasuringUnit measuringUnit, float price) {
+    public Material(Long id, String name, MaterialType type, int inDepo, float weight, float area, boolean zinked, boolean painted, MeasuringUnit measuringUnit, float price) {
         super();
         setId(id);
         setName(name);
@@ -124,7 +124,7 @@ public class Material {
      * Vraca id materijala
      * @return id materijala
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -133,7 +133,7 @@ public class Material {
      * @param id novi id materijala
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

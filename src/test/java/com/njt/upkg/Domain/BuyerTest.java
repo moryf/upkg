@@ -8,7 +8,7 @@ public class BuyerTest {
     public void testGettersAndSetters() {
         Buyer buyer = new Buyer();
 
-        buyer.setId(1);
+        buyer.setId(1L);
         assertEquals(1, buyer.getId());
 
         buyer.setName("John Doe");
@@ -41,14 +41,14 @@ public class BuyerTest {
     public void testIllegalArgumentExceptionInSetId() {
         Buyer buyer = new Buyer();
 
-        assertThrows(IllegalArgumentException.class, () -> buyer.setId(0));
-        assertThrows(IllegalArgumentException.class, () -> buyer.setId(-1));
+        assertThrows(IllegalArgumentException.class, () -> buyer.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> buyer.setId(-1L));
     }
 
 
     @Test
     public void testToString() {
-        Buyer buyer = new Buyer(1, "John Doe", "1234567890", "john@example.com");
+        Buyer buyer = new Buyer(1L, "John Doe", "1234567890", "john@example.com");
 
         String expectedToString = "Buyer{id=1, name='John Doe', number='1234567890', email='john@example.com'}";
 

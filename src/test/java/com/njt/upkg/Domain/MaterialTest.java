@@ -9,7 +9,7 @@ public class MaterialTest {
     public void testGettersAndSetters() {
         Material material = new Material();
 
-        material.setId(1);
+        material.setId(1L);
         assertEquals(1, material.getId());
 
         material.setName("Bubreg 1");
@@ -38,6 +38,14 @@ public class MaterialTest {
 
         material.setPrice(50.5f);
         assertEquals(50.5f, material.getPrice(), 0.01);
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetId() {
+        Material material = new Material();
+
+        assertThrows(IllegalArgumentException.class, () -> material.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> material.setId(-1L));
     }
 
     @Test
@@ -78,7 +86,7 @@ public class MaterialTest {
 
     @Test
     public void testToString() {
-        Material material = new Material(1, "Bubreg 1", MaterialType.Bubreg, 100, 2.5f, 5.0f, true, false, MeasuringUnit.Komad, 10.5f);
+        Material material = new Material(1L, "Bubreg 1", MaterialType.Bubreg, 100, 2.5f, 5.0f, true, false, MeasuringUnit.Komad, 10.5f);
 
         String expectedToString = "Material{id=1, name='Bubreg 1', type=Bubreg, inDepo=100, weight=2.5, area=5.0, zinked=true, painted=false, measuringUnit=Komad, price=10.5}";
 

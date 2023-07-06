@@ -13,7 +13,7 @@ public class ProjectMaterial {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Projekat na kom ej materijal utrosen
      * @see Project
@@ -57,7 +57,7 @@ public class ProjectMaterial {
      * @see Position
      * @see Material
      */
-    public ProjectMaterial(int id, Project project, Position position, Material material, int amount) {
+    public ProjectMaterial(Long id, Project project, Position position, Material material, int amount) {
         super();
         setId(id);
         setProject(project);
@@ -87,9 +87,9 @@ public class ProjectMaterial {
 
     /**
      * Vraca id utrosenog materijala
-     * @return id kao int
+     * @return id kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -98,7 +98,7 @@ public class ProjectMaterial {
      * @param id novi id utrosenog materijala
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

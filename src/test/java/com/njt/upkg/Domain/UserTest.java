@@ -9,8 +9,8 @@ public class UserTest {
     public void testGettersAndSetters() {
         User user = new User();
 
-        user.setId(1);
-        assertEquals(1, user.getId());
+        user.setId(1L);
+        assertEquals(1L, user.getId());
 
         user.setUsername("john_doe");
         assertEquals("john_doe", user.getUsername());
@@ -20,6 +20,14 @@ public class UserTest {
 
         user.setRole(Role.Admin);
         assertEquals(Role.Admin, user.getRole());
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetId() {
+        User user = new User();
+
+        assertThrows(IllegalArgumentException.class, () -> user.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> user.setId(-1L));
     }
 
     @Test
@@ -47,7 +55,7 @@ public class UserTest {
 
     @Test
     public void testToString() {
-        User user = new User(1, "john_doe", "password123", Role.Admin);
+        User user = new User(1L, "john_doe", "password123", Role.Admin);
 
         String expectedToString = "User{id=1, username='john_doe', password='password123', role=Admin}";
 

@@ -9,8 +9,8 @@ public class ProjectExpenseTest {
     public void testGettersAndSetters() {
         ProjectExpense projectExpense = new ProjectExpense();
 
-        projectExpense.setId(1);
-        assertEquals(1, projectExpense.getId());
+        projectExpense.setId(1L);
+        assertEquals(1L, projectExpense.getId());
 
         Project project = new Project();
         projectExpense.setProject(project);
@@ -32,8 +32,8 @@ public class ProjectExpenseTest {
     public void testIllegalArgumentExceptionInSetId() {
         ProjectExpense projectExpense = new ProjectExpense();
 
-        assertThrows(IllegalArgumentException.class, () -> projectExpense.setId(0));
-        assertThrows(IllegalArgumentException.class, () -> projectExpense.setId(-1));
+        assertThrows(IllegalArgumentException.class, () -> projectExpense.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> projectExpense.setId(-1L));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ProjectExpenseTest {
         Position position = new Position();
         ProjectOperation operation = new ProjectOperation();
 
-        ProjectExpense projectExpense = new ProjectExpense(1, project, position, operation, 100.0f);
+        ProjectExpense projectExpense = new ProjectExpense(1L, project, position, operation, 100.0f);
 
         String expectedToString = "ProjectExpense{id=1, project=" + project + ", position=" + position +
                 ", operation=" + operation + ", value=100.0}";

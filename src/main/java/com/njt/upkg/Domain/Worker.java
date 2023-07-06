@@ -9,11 +9,11 @@ import jakarta.persistence.*;
 @Entity
 public class Worker {
     /**
-     * Id radnika kao int
+     * Id radnika kao Long
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Ime radnika kao string
      */
@@ -52,7 +52,7 @@ public class Worker {
 
     /**
      * Kontruktor sa svim atributima klase
-     * @param id id Radnika kai int
+     * @param id id Radnika kai Long
      * @param name ime radnika kao String
      * @param address adresa radnika kao String
      * @param phone broj telefona radnika kao String
@@ -61,7 +61,7 @@ public class Worker {
      * @param pricePerHour satnica radnika kao float
      * @see WorkerType
      */
-    public Worker(int id, String name, String address, String phone, String email, WorkerType type, float pricePerHour) {
+    public Worker(Long id, String name, String address, String phone, String email, WorkerType type, float pricePerHour) {
         super();
         setId(id);
         setName(name);
@@ -93,18 +93,18 @@ public class Worker {
 
     /**
      * vraca id radnika
-     * @return id radnika kao int
+     * @return id radnika kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Postavlja id radnika
-     * @param id radnika kao int
+     * @param id radnika kao Long
      * @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

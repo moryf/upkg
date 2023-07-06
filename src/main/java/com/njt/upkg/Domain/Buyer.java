@@ -15,7 +15,7 @@ public class Buyer {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Ime kupca
      */
@@ -44,7 +44,7 @@ public class Buyer {
      * @param number broj telefona kupca
      * @param email eMail kupca
      */
-    public Buyer(int id, String name, String number, String email) {
+    public Buyer(Long id, String name, String number, String email) {
         super();
         setId(id);
         setName(name);
@@ -69,7 +69,7 @@ public class Buyer {
      * Vraca id kupca
      * @return id kupca
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -78,7 +78,7 @@ public class Buyer {
      * @param id novi id kupca
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }

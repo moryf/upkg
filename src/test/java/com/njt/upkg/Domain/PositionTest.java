@@ -9,8 +9,8 @@ public class PositionTest {
     public void testGettersAndSetters() {
         Position position = new Position();
 
-        position.setId(1);
-        assertEquals(1, position.getId());
+        position.setId(1L);
+        assertEquals(1L, position.getId());
 
         Project project = new Project();
         position.setProject(project);
@@ -24,6 +24,14 @@ public class PositionTest {
 
         position.setMounted(true);
         assertTrue(position.isMounted());
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetId() {
+        Position position = new Position();
+
+        assertThrows(IllegalArgumentException.class, () -> position.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> position.setId(-1L));
     }
 
     @Test
@@ -44,7 +52,7 @@ public class PositionTest {
     @Test
     public void testToString() {
         Project project = new Project();
-        Position position = new Position(1, project, "Position A", true, false);
+        Position position = new Position(1L, project, "Position A", true, false);
 
         String expectedToString = "Position{id=1, project=" + project + ", name='Position A', readyToMount=true, mounted=false}";
 

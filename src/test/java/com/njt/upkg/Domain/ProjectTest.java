@@ -10,8 +10,8 @@ public class ProjectTest {
     public void testGettersAndSetters() {
         Project project = new Project();
 
-        project.setId(1);
-        assertEquals(1, project.getId());
+        project.setId(1L);
+        assertEquals(1L, project.getId());
 
         project.setName("Project ABC");
         assertEquals("Project ABC", project.getName());
@@ -39,6 +39,13 @@ public class ProjectTest {
         assertEquals(ProjectState.Projektovanje, project.getState());
     }
 
+    @Test
+    public void testIllegalArgumentExceptionInSetId() {
+        Project project = new Project();
+
+        assertThrows(IllegalArgumentException.class, () -> project.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> project.setId(-1L));
+    }
     @Test
     public void testIllegalArgumentExceptionInSetName() {
         Project project = new Project();
@@ -80,7 +87,7 @@ public class ProjectTest {
         Buyer buyer = new Buyer();
         User createdBy = new User();
 
-        Project project = new Project(1, "Project ABC", new Date(), new Date(), buyer, 1000.0f, createdBy, ProjectState.Projektovanje);
+        Project project = new Project(1L, "Project ABC", new Date(), new Date(), buyer, 1000.0f, createdBy, ProjectState.Projektovanje);
 
         String expectedToString = "Project{id=1, name='Project ABC', deadline=" + project.getDeadline() +
                 ", buyer=" + buyer + ", value=1000.0, createdBy=" + createdBy + ", state=Projektovanje}";

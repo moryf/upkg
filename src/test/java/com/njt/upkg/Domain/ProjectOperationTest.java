@@ -12,8 +12,8 @@ public class ProjectOperationTest {
     public void testGettersAndSetters() {
         ProjectOperation operation = new ProjectOperation();
 
-        operation.setId(1);
-        assertEquals(1, operation.getId());
+        operation.setId(1L);
+        assertEquals(1L, operation.getId());
 
         Project project = new Project();
         operation.setProject(project);
@@ -49,8 +49,8 @@ public class ProjectOperationTest {
     public void testIllegalArgumentExceptionInSetId() {
         ProjectOperation operation = new ProjectOperation();
 
-        assertThrows(IllegalArgumentException.class, () -> operation.setId(0));
-        assertThrows(IllegalArgumentException.class, () -> operation.setId(-1));
+        assertThrows(IllegalArgumentException.class, () -> operation.setId(0L));
+        assertThrows(IllegalArgumentException.class, () -> operation.setId(-1L));
     }
 
     @Test
@@ -89,7 +89,7 @@ public class ProjectOperationTest {
         Date start = new Date();
         Date ended = new Date(start.getTime() + 1000);
 
-        ProjectOperation operation = new ProjectOperation(1, project, position, worker, type, start, ended, true);
+        ProjectOperation operation = new ProjectOperation(1L, project, position, worker, type, start, ended, true);
 
         String expectedToString = "ProjectOperation{id=1, project=" + project + ", position=" + position + ", worker=" + worker +
                 ", type=" + type + ", start=" + start + ", ended=" + ended + ", active=true}";

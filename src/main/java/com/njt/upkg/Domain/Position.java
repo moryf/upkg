@@ -14,7 +14,7 @@ public class Position {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     /**
      * Projekat kome pripada pozicija kao klasa {@link Project}
      * @see Project
@@ -44,14 +44,14 @@ public class Position {
 
     /**
      * Konstruktor sa svim atributima
-     * @param id id projekta kao int
+     * @param id id projekta kao Long
      * @param project projekat kome pozicija pripada klase {@link Project}
      * @see Project
      * @param name naziv porzicije kao String
      * @param readyToMount da li je pozicija spremna za montazu kao boolean
      * @param mounted da li je pozicija montirana kao boolean
      */
-    public Position(int id, Project project, String name, boolean readyToMount, boolean mounted) {
+    public Position(Long id, Project project, String name, boolean readyToMount, boolean mounted) {
         super();
         setId(id);
         setProject(project);
@@ -77,9 +77,9 @@ public class Position {
 
     /**
      * Vraca id projekta
-     * @return id projekta kao int
+     * @return id projekta kao Long
      */
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -88,7 +88,7 @@ public class Position {
      * @param id id projekta kao int
      *           @throws IllegalArgumentException ako je id postavljen manji ili jednak 0
      */
-    public void setId(int id) {
+    public void setId(Long id) {
         if (id<=0) throw new IllegalArgumentException("ID ne moze da bude manji ili jednak 0");
         this.id = id;
     }
