@@ -3,6 +3,8 @@ package com.njt.upkg.Domain;
 
 /**
  * Enumeracija tipova radnika u sistemu
+ *
+ * @author moryf
  */
 public enum WorkerType {
     /**

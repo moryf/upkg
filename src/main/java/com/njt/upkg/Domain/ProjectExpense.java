@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 
 /**
  * Klasa koja predstavlja troskove na projektu
+ *
+ * @author moryf
  */
 @Entity
 public class ProjectExpense {

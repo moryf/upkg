@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 /**
  * Klasa koja predstavlja korisnika sistema
+ *
+ * @author moryf
  */
 @Entity
 @Table(name = "users")
@@ -135,7 +137,7 @@ public class User {
      * @throws NullPointerException ako je unesena uloga null
      */
     public void setRole(Role role) {
-        if (role==null) throw new IllegalArgumentException("Uloga ne moze da bude null");
+        if (role==null) throw new NullPointerException("Uloga ne moze da bude null");
         this.role = role;
     }
 

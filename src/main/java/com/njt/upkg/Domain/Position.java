@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 
 /**
  * Klasa koja predstavlja pozicije na projektu, mogu se posmatrati kao podprojekti
+ *
+ * @author moryf
  */
 @Entity
 @Table(name = "positions")

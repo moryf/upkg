@@ -3,6 +3,8 @@ package com.njt.upkg.Domain;
 
 /**
  * Vrste materijala
+ *
+ * @author moryf
  */
 public enum MaterialType {
     /**

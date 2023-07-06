@@ -3,6 +3,8 @@ package com.njt.upkg.Domain;
 
 /**
  * Enumeracija mernih jedinica za kolicinu materijala
+ *
+ * @author moryf
  */
 public enum MeasuringUnit {
     /**

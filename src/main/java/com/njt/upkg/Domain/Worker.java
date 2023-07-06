@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 
 /**
  * Klasa koja predstavlja Radnika
+ *
+ * @author moryf
  */
 @Entity
 public class Worker {

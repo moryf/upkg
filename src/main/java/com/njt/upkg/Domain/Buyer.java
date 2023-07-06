@@ -3,7 +3,9 @@ package com.njt.upkg.Domain;
 import jakarta.persistence.*;
 
 /**
- * Klasa koja predstavlja kupce za koje se rade projekti
+ * Klasa koja predstavlja kupce za koje se rade projekti1
+ *
+ * @author moryf
  */
 @Entity
 @Table(name = "buyers")

@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 
 /**
  * Klasa koja predstavlja materijal upotrebljen na nekom projektu
+ *
+ * @author moryf
  */
 @Entity
 public class ProjectMaterial {

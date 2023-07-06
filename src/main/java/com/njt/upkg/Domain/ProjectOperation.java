@@ -6,6 +6,8 @@ import java.util.Date;
 
 /**
  * Klasa koja predstavlja operacije koje se izvrsavaju na projektu
+ *
+ * @author moryf
  */
 @Entity
 public class ProjectOperation {

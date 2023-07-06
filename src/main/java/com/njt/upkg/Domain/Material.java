@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 
 /**
  * Materijali koji se koriste u projektima, obuhvata i elemente koji ulaze u sklop proizvoda
+ *
+ * @author moryf
  */
 @Entity
 public class Material {
