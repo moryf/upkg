@@ -6,5 +6,20 @@ package com.njt.upkg.Domain;
  */
 
 public enum ProjectState {
-    Projektovanje,Izrada,Montaza,Gotov
+    /**
+     * Projekat je u fazi projetktovanja
+     */
+    Projektovanje,
+    /**
+     * Projekat je u fazi izrade
+     */
+    Izrada,
+    /**
+     * Projekat je u fazi montiranja
+     */
+    Montaza,
+    /**
+     * Projekat je zavrsen
+     */
+    Gotov
 }
