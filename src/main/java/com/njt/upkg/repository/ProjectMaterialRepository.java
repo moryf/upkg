@@ -15,10 +15,4 @@ public interface ProjectMaterialRepository extends JpaRepository<ProjectMaterial
      */
     List<ProjectMaterial> findAllByProject_Id(Long id);
 
-    /**
-     * Vraca listu materijala utrosenog za datu poziciju
-     * @param id id Pozicije za koju se trazi utrosen materijal
-     * @return Lista utrosenog materijala za datu poziciju
-     */
-    List<ProjectMaterial> findAllByPosition_Id(Long id);
 }

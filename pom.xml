@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.njt</groupId>
 	<artifactId>upkg</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Upravljanje Projektima Kovano Gvozdje</name>
-	<description>Projekat ya upravljanje rpojektima u kovanom gvozdju</description>
+	<description>Projekat za upravljanje projektima u kovanom gvozdju</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -41,6 +41,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>

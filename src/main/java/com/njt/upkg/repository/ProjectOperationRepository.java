@@ -16,10 +16,4 @@ public interface ProjectOperationRepository extends JpaRepository<ProjectOperati
      */
     List<ProjectOperation> findAllByProject_Id(Long id);
 
-    /**
-     * Vraca sve operacije za datu poziciju
-     * @param id id pozicije za koju se traze operacije
-     * @return Lista operacija za datu poziciju
-     */
-    List<ProjectOperation> findAllByPosition_Id(Long id);
 }

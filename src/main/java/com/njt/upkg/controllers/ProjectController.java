@@ -10,24 +10,67 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/**
+ * Rest kontroler sa radom sa projektom, CRUD operacije nad samim projektima kao i njihovim komponentama
+ * Kao {@link ProjectOperation},{@link ProjectMaterial},{@link ProjectExpense} i {@link Position}
+ */
 @RestController
 @RequestMapping(value = "/projects")
 public class ProjectController {
+    /**
+     * Repozitorijum projekata
+     */
     private final ProjectRepository projectRepository;
+    /**
+     * Repozitorijum kupaca
+     */
     private final BuyerRepository buyerRepository;
+    /**
+     * Repozitorijum korisnika
+     */
     private final UserRepository userRepository;
+    /**
+     * Repozitorijum pozicija
+     */
     private final PositionRepository positionRepository;
+    /**
+     * Repozitorijum troskova
+     */
     private final ProjectExpenseRepository projectExpenseRepository;
+    /**
+     * Repozitorijum operacija
+     */
 
     private final ProjectOperationRepository projectOperationRepository;
+    /**
+     * Repozitorijum utroska materijala
+     */
     private final ProjectMaterialRepository projectMaterialRepository;
+    /**
+     * Repozitorijum radnika
+     */
     private final WorkerRepository workerRepository;
+    /**
+     * Repozitorijum materijala
+     */
     private final MaterialRepository materialRepository;
 
-
+    /**
+     *
+     * {@link Autowired} konstruktor koji inicijalizuje sve repozitorijume u kontroleru
+     * @param projectRepository repozitorijum projekata
+     * @param buyerRepository repozitorijum kupaca
+     * @param userRepository repozitorijum korisnika
+     * @param positionRepository repozitorijum pozicija
+     * @param projectExpenseRepository repozitorijum troskova
+     * @param projectOperationRepository repozitorijum operacija
+     * @param projectMaterialRepository rapozitorijum utroska materijala
+     * @param workerRepository repozitorijum radnika
+     * @param materialRepository repozitorijum materijala
+     */
     @Autowired
-    public ProjectController(ProjectRepository projectService, BuyerRepository buyerRepository, UserRepository userRepository, PositionRepository positionRepository, ProjectExpenseRepository projectExpenseRepository, ProjectOperationRepository projectOperationRepository, ProjectMaterialRepository projectMaterialRepository, WorkerRepository workerRepository, MaterialRepository materialRepository) {
-        this.projectRepository = projectService;
+    public ProjectController(ProjectRepository projectRepository, BuyerRepository buyerRepository, UserRepository userRepository, PositionRepository positionRepository, ProjectExpenseRepository projectExpenseRepository, ProjectOperationRepository projectOperationRepository, ProjectMaterialRepository projectMaterialRepository, WorkerRepository workerRepository, MaterialRepository materialRepository) {
+        this.projectRepository = projectRepository;
         this.buyerRepository = buyerRepository;
         this.userRepository = userRepository;
         this.positionRepository = positionRepository;
@@ -38,6 +81,10 @@ public class ProjectController {
         this.materialRepository = materialRepository;
     }
 
+    /**
+     * Ruta koja vraca sve projekte iz baze
+     * @return ResponseEntity sa svim projektima iz baze
+     */
     @GetMapping
     public ResponseEntity<?> getAllProjects(){
         try {
@@ -48,6 +95,11 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Ruta koja vraca projekat po idu
+     * @param id id projekta
+     * @return ResponseEntity sa projektom po idu ako postoji
+     */
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findProjectByID(@PathVariable("id") Long id){
         try {
@@ -60,6 +112,11 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Ruta koja dodaje novi projekat u bazu
+     * @param projectDTO Projekat koji se dodaje u bazu kao {@link ProjectDTO}
+     * @return ResponseEntity sa projektom koji je dodat, ako je dodavanje uspesno
+     */
     @PostMapping(value = "/add",consumes = "application/json")
     public ResponseEntity<?> addProject(@RequestBody ProjectDTO projectDTO){
         System.out.println(projectDTO);
@@ -86,6 +143,12 @@ public class ProjectController {
         }
     }
 
+    /**
+     * rutaza azuriranje projekta u bazi
+     * @param id id projekta koji se azurira
+     * @param projectDTO novi parametri objekta kao {@link ProjectDTO}
+     * @return Azurirani projekat ako je azuriranje uspesno
+     */
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateProject(@PathVariable("id") Long id, ProjectDTO projectDTO){
         try {
@@ -111,6 +174,11 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Ruta za brisanje projekta
+     * @param id projekta koji se brise
+     * @return ResponseEntity sa podatkom o uspesnosti operacije
+     */
     @DeleteMapping(value = "/{id}/delete")
     public ResponseEntity<?> deleteProject(@PathVariable("id") Long id){
         try {
@@ -122,6 +190,11 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Ruta koja vraca sve pozicije za dati projekat
+     * @param id id projekta za koji se traze pozicije
+     * @return ResponseEntity sa pozicijama projekta ako postoje u bazi
+     */
     @GetMapping(value = "/{id}/positions")
     public ResponseEntity<?> getPositons(@PathVariable("id") Long id){
         try {
@@ -132,6 +205,12 @@ public class ProjectController {
         }
     }
 
+    /**
+     * Ruta za dodavanje pozicije na projekat
+     * @param id id projekta na koji sedodaje pozicija
+     * @param positionDTO Atrubuti pozicije koja se dodaje kao {@link PositionDTO}
+     * @return ResponseEntity sa dodatom pozicijom, ako je uspesno
+     */
     @PostMapping(value = "/{id}/positions/add")
     public ResponseEntity<?> addPosition(@PathVariable("id") Long id, @RequestBody PositionDTO positionDTO){
         try {
@@ -145,7 +224,11 @@ public class ProjectController {
         }
     }
 
-
+    /**
+     * Ruta koja vraca sve troskove za dati projekat
+     * @param id id projekta za koji se traze troskovi
+     * @return ResponseEntity sa troskovima projekta ako postoje u bazi
+     */
     @GetMapping(value = "/{id}/expenses")
     public ResponseEntity<?> getExpenses(@PathVariable("id") Long id){
         try {
@@ -155,6 +238,12 @@ public class ProjectController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
+    /**
+     * Ruta za dodavanje troska na projekat
+     * @param id id projekta na koji se dodaje trosak
+     * @param projectExpenseDTO Atrubuti troska koja se dodaje kao {@link ProjectExpenseDTO}
+     * @return ResponseEntity sa dodatim troskom, ako je uspesno
+     */
     @PostMapping(value = "/{id}/expenses/add")
     public ResponseEntity<?> addExpense(@PathVariable("id") Long id, @RequestBody ProjectExpenseDTO projectExpenseDTO){
         try {
@@ -169,7 +258,11 @@ public class ProjectController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
-
+    /**
+     * Ruta koja vraca sve operacije za dati projekat
+     * @param id id projekta za koji se traze operacije
+     * @return ResponseEntity sa operacijama projekta ako postoje u bazi
+     */
     @GetMapping(value = "/{id}/operations")
     public ResponseEntity<?> getOperations(@PathVariable("id") Long id){
         try {
@@ -179,6 +272,12 @@ public class ProjectController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
+    /**
+     * Ruta za dodavanje operacije na projekat
+     * @param id id projekta na koji se dodaje operacija
+     * @param projectOperationDTO Atrubuti operaccije koja se dodaje kao {@link ProjectOperationDTO}
+     * @return ResponseEntity sa dodatom operacijom, ako je uspesno
+     */
     @PostMapping(value = "/{id}/operations/add")
     public ResponseEntity<?> addOperation(@PathVariable("id") Long id, @RequestBody ProjectOperationDTO projectOperationDTO){
         try {
@@ -197,7 +296,11 @@ public class ProjectController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
-
+    /**
+     * Ruta koja vraca sve materijale utrosene za dati projekat
+     * @param id id projekta za koji se traze utroseni materijali
+     * @return ResponseEntity sa utroscima materijala projekta ako postoje u bazi
+     */
     @GetMapping(value = "/{id}/materials")
     public ResponseEntity<?> getMaterials(@PathVariable("id") Long id){
         try {
@@ -207,7 +310,12 @@ public class ProjectController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
-
+    /**
+     * Ruta za dodavanje utroska materijala na projekat
+     * @param id id projekta na koji se dodaje utrosak materijala
+     * @param projectMaterialDTO Atrubuti utroska materijala koja se dodaje kao {@link ProjectMaterialDTO}
+     * @return ResponseEntity sa dodatim utroskom materijala, ako je uspesno
+     */
     @PostMapping(value = "/{id}/materials/add")
     public ResponseEntity<?> addMaterial(@PathVariable("id") Long id, @RequestBody ProjectMaterialDTO projectMaterialDTO){
         try {

@@ -15,18 +15,4 @@ public interface ProjectExpenseRepository extends JpaRepository<ProjectExpense,L
      * @return Lista svih troskova za dati projekat
      */
     List<ProjectExpense> findAllByProject_Id(Long id);
-
-    /**
-     * Vraca sve troskove za datu poziciju
-     * @param id id Pozicije za koju se traze troskovi
-     * @return Lista svih troskova za datu poziciju
-     */
-    List<ProjectExpense> findAllByPosition_Id(Long id);
-
-    /**
-     * Vraca sve troskove za datu operaciju
-     * @param id id operacije za koju se traze troskovi
-     * @return Lista troskova za datu operaciju
-     */
-    List<ProjectExpense> findAllByOperation_Id(Long id);
 }
