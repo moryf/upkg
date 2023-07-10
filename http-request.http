@@ -1,0 +1,23 @@
+POST http://localhost:8080/projects/add
+Content-Type: application/json
+
+{
+  "name": "Projekat TEst",
+  "buyerID": 1,
+  "createdByID": 1,
+  "start": "2023-07-08T19:18:20.000+00:00",
+  "deadline": "2023-08-24T19:17:44.000+00:00",
+  "value": 1500000.0,
+  "state": "Izrada"
+}
+
+###
+###
+
+GET http://localhost:8080/projects/1
+Content-Type: application/json
+
+
+<> 2023-07-09T111051.400.json
+
+###

@@ -107,10 +107,8 @@ public class Position {
      * Postavlja projekat kome klasa pripada
      * @param project Projekat kome klasa pripada klase {@link Project}
      * @see Project
-     * @throws NullPointerException ako je projekat null
      */
     public void setProject(Project project) {
-        if (project==null) throw  new NullPointerException("Projekat ne moze da bude prazan");
         this.project = project;
     }
 

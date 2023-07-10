@@ -61,12 +61,6 @@ public class ProjectTest {
         assertThrows(NullPointerException.class, () -> project.setDeadline(null));
     }
 
-    @Test
-    public void testNullPointerExceptionInSetBuyer() {
-        Project project = new Project();
-
-        assertThrows(NullPointerException.class, () -> project.setBuyer(null));
-    }
 
     @Test
     public void testIllegalArgumentExceptionInSetValue() {

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import jakarta.persistence.*;
 
+import javax.annotation.Generated;
+
 /**
  * Predstavlja projekat
  *
@@ -181,7 +183,6 @@ public class Project {
      * @throws NullPointerException ako je kupac koji  se unosi null
      */
     public void setBuyer(Buyer buyer) {
-        if (buyer==null) throw  new NullPointerException("Kupac ne moze da bude null");
         this.buyer = buyer;
     }
 

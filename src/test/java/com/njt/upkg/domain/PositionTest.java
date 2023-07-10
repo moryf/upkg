@@ -43,13 +43,6 @@ public class PositionTest {
     }
 
     @Test
-    public void testNullPointerExceptionInSetProject() {
-        Position position = new Position();
-
-        assertThrows(NullPointerException.class, () -> position.setProject(null));
-    }
-
-    @Test
     public void testToString() {
         Project project = new Project();
         Position position = new Position(1L, project, "Position A", true, false);
