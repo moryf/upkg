@@ -59,7 +59,8 @@ public class ProjectOperationTest {
     public void testGetEnded() {
         ProjectOperation operation = new ProjectOperation();
         Date start = new Date();
-        Date ended = new Date(start.getTime() + 1000); // Add 1 second to the start time
+        Date ended = new Date(start.getTime() + 1000);
+        operation.setStart(start);
         operation.setEnded(ended);
         assertEquals(ended, operation.getEnded());
     }
