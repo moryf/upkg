@@ -7,52 +7,90 @@ import java.util.Date;
 public class ProjectTest {
 
     @Test
-    public void testGettersAndSetters() {
+    public void testGetId() {
         Project project = new Project();
-
         project.setId(1L);
         assertEquals(1L, project.getId());
+    }
 
+    @Test
+    public void testGetName() {
+        Project project = new Project();
         project.setName("Project ABC");
         assertEquals("Project ABC", project.getName());
+    }
 
+    @Test
+    public void testGetStart() {
+        Project project = new Project();
         Date startDate = new Date();
         project.setStart(startDate);
         assertEquals(startDate, project.getStart());
+    }
 
+    @Test
+    public void testGetDeadline() {
+        Project project = new Project();
         Date deadline = new Date();
         project.setDeadline(deadline);
         assertEquals(deadline, project.getDeadline());
+    }
 
+    @Test
+    public void testGetBuyer() {
+        Project project = new Project();
         Buyer buyer = new Buyer();
         project.setBuyer(buyer);
         assertEquals(buyer, project.getBuyer());
+    }
 
+    @Test
+    public void testGetValue() {
+        Project project = new Project();
         project.setValue(1000.0f);
         assertEquals(1000.0f, project.getValue());
+    }
 
+    @Test
+    public void testGetCreatedBy() {
+        Project project = new Project();
         User createdBy = new User();
         project.setCreatedBy(createdBy);
         assertEquals(createdBy, project.getCreatedBy());
+    }
 
+    @Test
+    public void testGetState() {
+        Project project = new Project();
         project.setState(ProjectState.Projektovanje);
         assertEquals(ProjectState.Projektovanje, project.getState());
     }
 
-    @Test
-    public void testIllegalArgumentExceptionInSetId() {
-        Project project = new Project();
 
+    @Test
+    public void testIllegalArgumentExceptionInSetIdWithZero() {
+        Project project = new Project();
         assertThrows(IllegalArgumentException.class, () -> project.setId(0L));
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetIdWithNegativeValue() {
+        Project project = new Project();
         assertThrows(IllegalArgumentException.class, () -> project.setId(-1L));
     }
-    @Test
-    public void testIllegalArgumentExceptionInSetName() {
-        Project project = new Project();
 
+    @Test
+    public void testIllegalArgumentExceptionInSetNameWithNull() {
+        Project project = new Project();
         assertThrows(IllegalArgumentException.class, () -> project.setName(null));
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetNameWithEmptyString() {
+        Project project = new Project();
         assertThrows(IllegalArgumentException.class, () -> project.setName(""));
     }
+
 
     @Test
     public void testNullPointerExceptionInSetDeadline() {

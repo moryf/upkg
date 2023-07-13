@@ -5,21 +5,33 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BuyerTest {
 
     @Test
-    public void testGettersAndSetters() {
+    public void testGetId() {
         Buyer buyer = new Buyer();
-
         buyer.setId(1L);
         assertEquals(1, buyer.getId());
+    }
 
+    @Test
+    public void testGetName() {
+        Buyer buyer = new Buyer();
         buyer.setName("John Doe");
         assertEquals("John Doe", buyer.getName());
+    }
 
+    @Test
+    public void testGetNumber() {
+        Buyer buyer = new Buyer();
         buyer.setNumber("1234567890");
         assertEquals("1234567890", buyer.getNumber());
+    }
 
+    @Test
+    public void testGetEmail() {
+        Buyer buyer = new Buyer();
         buyer.setEmail("john@example.com");
         assertEquals("john@example.com", buyer.getEmail());
     }
+
 
     @Test
     public void testIllegalArgumentExceptionInSetName() {

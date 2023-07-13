@@ -6,45 +6,72 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserTest {
 
     @Test
-    public void testGettersAndSetters() {
+    public void testGetId() {
         User user = new User();
-
         user.setId(1L);
         assertEquals(1L, user.getId());
+    }
 
+    @Test
+    public void testGetUsername() {
+        User user = new User();
         user.setUsername("john_doe");
         assertEquals("john_doe", user.getUsername());
+    }
 
+    @Test
+    public void testGetPassword() {
+        User user = new User();
         user.setPassword("password123");
         assertEquals("password123", user.getPassword());
+    }
 
+    @Test
+    public void testGetRole() {
+        User user = new User();
         user.setRole(Role.Admin);
         assertEquals(Role.Admin, user.getRole());
     }
 
-    @Test
-    public void testIllegalArgumentExceptionInSetId() {
-        User user = new User();
 
+    @Test
+    public void testIllegalArgumentExceptionInSetIdWithZero() {
+        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setId(0L));
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetIdWithNegativeValue() {
+        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setId(-1L));
     }
 
-    @Test
-    public void testIllegalArgumentExceptionInSetUsername() {
-        User user = new User();
 
+    @Test
+    public void testIllegalArgumentExceptionInSetUsernameWithNull() {
+        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setUsername(null));
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetUsernameWithEmptyString() {
+        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setUsername(""));
     }
 
-    @Test
-    public void testIllegalArgumentExceptionInSetPassword() {
-        User user = new User();
 
+    @Test
+    public void testIllegalArgumentExceptionInSetPasswordWithNull() {
+        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setPassword(null));
+    }
+
+    @Test
+    public void testIllegalArgumentExceptionInSetPasswordWithEmptyString() {
+        User user = new User();
         assertThrows(IllegalArgumentException.class, () -> user.setPassword(""));
     }
+
 
     @Test
     public void testNullPointerExceptionInSetRole() {

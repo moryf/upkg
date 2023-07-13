@@ -123,7 +123,7 @@ public class Worker {
      * @throws IllegalArgumentException ako je uneto ime null ili prazan string
      */
     public void setName(String name) {
-        if (name==null||name=="") throw new IllegalArgumentException("Ime ne moze a bude prazno");
+        if (name==null||name.isEmpty()) throw new IllegalArgumentException("Ime ne moze a bude prazno");
         this.name = name;
     }
 

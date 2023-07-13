@@ -152,7 +152,7 @@ public class Material {
      * @throws IllegalArgumentException ako je naziv mateijala null ili prazan String
      */
     public void setName(String name) {
-        if(name==null||name=="") throw new IllegalArgumentException("Naziv ne moze da bude prazan");
+        if(name==null||name.isEmpty()) throw new IllegalArgumentException("Naziv ne moze da bude prazan");
         this.name = name;
     }
 

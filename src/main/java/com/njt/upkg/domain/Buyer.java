@@ -97,7 +97,7 @@ public class Buyer {
      * @throws IllegalArgumentException ako je ime prazno
      */
     public void setName(String name) {
-        if(name==null || name == "") {
+        if(name==null || name.isEmpty()) {
             throw new IllegalArgumentException("Ime ne moze da bude prazno");
         }
         this.name = name;
@@ -133,7 +133,7 @@ public class Buyer {
      * @throws IllegalArgumentException ako je email prazan
      */
     public void setEmail(String email) {
-        if(email==null|| email== "") throw new IllegalArgumentException("email ne moze da bude prazan");
+        if(email==null|| email.isEmpty()) throw new IllegalArgumentException("email ne moze da bude prazan");
         this.email = email;
     }
 

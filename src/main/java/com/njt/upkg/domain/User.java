@@ -100,7 +100,7 @@ public class User {
      * @throws IllegalArgumentException ako je uneto korisnicko ime prazno
      */
     public void setUsername(String username) {
-        if(username==null||username=="") throw new IllegalArgumentException("Korisnicko ime ne moze da bude prazno");
+        if(username==null||username.isEmpty()) throw new IllegalArgumentException("Korisnicko ime ne moze da bude prazno");
         this.username = username;
     }
 
@@ -118,7 +118,7 @@ public class User {
      * @throws IllegalArgumentException ako je uneta sifra prazna
      */
     public void setPassword(String password) {
-        if(password==null||password=="") throw new IllegalArgumentException("Korisnicka sifra ne moze da bude prazna");
+        if(password==null||password.isEmpty()) throw new IllegalArgumentException("Korisnicka sifra ne moze da bude prazna");
         this.password = password;
     }
 

@@ -145,7 +145,7 @@ public class Project {
      * @throws IllegalArgumentException ako je String null ili prazan
      */
     public void setName(String name) {
-        if (name==null|| name=="") throw new IllegalArgumentException("Ime ne moze da bude prazno");
+        if (name==null|| name.isEmpty()) throw new IllegalArgumentException("Ime ne moze da bude prazno");
         this.name = name;
     }
 
