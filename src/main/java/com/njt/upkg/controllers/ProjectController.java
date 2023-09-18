@@ -14,8 +14,9 @@ import java.util.Optional;
  * Rest kontroler sa radom sa projektom, CRUD operacije nad samim projektima kao i njihovim komponentama
  * Kao {@link ProjectOperation},{@link ProjectMaterial},{@link ProjectExpense} i {@link Position}
  */
+@CrossOrigin
 @RestController
-@RequestMapping(value = "/projects")
+@RequestMapping(value = "/api/projects")
 public class ProjectController {
     /**
      * Repozitorijum projekata
@@ -88,9 +89,11 @@ public class ProjectController {
     @GetMapping
     public ResponseEntity<?> getAllProjects(){
         try {
+            System.out.println(projectRepository.findAll());
             return ResponseEntity.ok(projectRepository.findAll());
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
@@ -117,7 +120,8 @@ public class ProjectController {
      * @param projectDTO Projekat koji se dodaje u bazu kao {@link ProjectDTO}
      * @return ResponseEntity sa projektom koji je dodat, ako je dodavanje uspesno
      */
-    @PostMapping(value = "/add",consumes = "application/json")
+    @CrossOrigin
+    @PostMapping(value = "/add")
     public ResponseEntity<?> addProject(@RequestBody ProjectDTO projectDTO){
         System.out.println(projectDTO);
         try {
@@ -139,6 +143,7 @@ public class ProjectController {
             return ResponseEntity.ok(p);
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
@@ -155,6 +160,7 @@ public class ProjectController {
             Optional<Project> optionalProject = projectRepository.findById(id);
             if (!optionalProject.isPresent()) throw new ResourceDoesNotExistException("Projekat sa ovim id-edm ne postoji");
             Project p = optionalProject.get();
+
             Optional<User> u = userRepository.findById(projectDTO.getCreatedByID());
             if (!u.isPresent()) throw new ResourceDoesNotExistException("Korisnik sa ovim id-em ne postoji");
             Optional<Buyer> b = buyerRepository.findById(projectDTO.getBuyerID());
@@ -170,6 +176,7 @@ public class ProjectController {
             return ResponseEntity.ok(p);
         }
         catch (Exception e){
+
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
@@ -182,10 +189,26 @@ public class ProjectController {
     @DeleteMapping(value = "/{id}/delete")
     public ResponseEntity<?> deleteProject(@PathVariable("id") Long id){
         try {
+
             projectRepository.deleteById(id);
             return ResponseEntity.ok().build();
         }
         catch (Exception e ){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @PutMapping(value = "/{id}/state")
+    public ResponseEntity<?> changeState(@PathVariable("id") Long id, @RequestBody ProjectState state){
+        try {
+            Optional<Project> optionalProject = projectRepository.findById(id);
+            if (!optionalProject.isPresent()) throw new ResourceDoesNotExistException("Projekat sa ovim id-edm ne postoji");
+            Project p = optionalProject.get();
+            p.setState(state);
+            projectRepository.save(p);
+            return ResponseEntity.ok(p);
+        }
+        catch (Exception e){
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
@@ -213,6 +236,7 @@ public class ProjectController {
      */
     @PostMapping(value = "/{id}/positions/add")
     public ResponseEntity<?> addPosition(@PathVariable("id") Long id, @RequestBody PositionDTO positionDTO){
+        System.out.println(positionDTO);
         try {
             Project p = projectRepository.findById(id).get();
             Position position = new Position(p,positionDTO.getName(), positionDTO.isRedyToMount(), positionDTO.isMounted());
@@ -265,6 +289,7 @@ public class ProjectController {
      */
     @GetMapping(value = "/{id}/operations")
     public ResponseEntity<?> getOperations(@PathVariable("id") Long id){
+
         try {
             return ResponseEntity.ok(projectOperationRepository.findAllByProject_Id(id));
         }
@@ -280,6 +305,7 @@ public class ProjectController {
      */
     @PostMapping(value = "/{id}/operations/add")
     public ResponseEntity<?> addOperation(@PathVariable("id") Long id, @RequestBody ProjectOperationDTO projectOperationDTO){
+        System.out.println(projectOperationDTO);
         try {
             Project p = projectRepository.findById(id).get();
             ProjectOperation projectOperation = new ProjectOperation(p,
@@ -293,6 +319,7 @@ public class ProjectController {
             return ResponseEntity.ok(projectOperation);
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }

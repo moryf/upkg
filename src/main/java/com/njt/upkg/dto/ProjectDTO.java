@@ -150,4 +150,17 @@ public class ProjectDTO {
     public void setValue(float value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "ProjectDTO{" +
+                "buyerID=" + buyerID +
+                ", createdByID=" + createdByID +
+                ", deadline=" + deadline +
+                ", start=" + start +
+                ", name='" + name + '\'' +
+                ", state=" + state +
+                ", value=" + value +
+                '}';
+    }
 }

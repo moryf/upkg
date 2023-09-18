@@ -10,5 +10,4 @@ public class UpravljanjeProjektimaKovanoGvozdjeApplication {
 		SpringApplication.run(UpravljanjeProjektimaKovanoGvozdjeApplication.class, args);
 	}
 
-
 }

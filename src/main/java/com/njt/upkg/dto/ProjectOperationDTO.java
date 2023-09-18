@@ -9,14 +9,6 @@ import java.util.Date;
  */
 public class ProjectOperationDTO {
     /**
-     * id operacije
-     */
-    Long id;
-    /**
-     * id projekta
-     */
-    Long prrojectID;
-    /**
      * id pozicije
      */
     Long positionID;
@@ -45,36 +37,6 @@ public class ProjectOperationDTO {
      * Prazan konstruktor
      */
     public ProjectOperationDTO() {
-    }
-
-    /**
-     * Vraca id operacije
-     * @return id operaccije kao Long
-     */
-    public Long getId() {
-        return id;
-    }
-    /**
-     * Postavlja id operacije
-     * @param id  id operaccije kao Long
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Vraca id projekta
-     * @return id projekta kao Long
-     */
-    public Long getPrrojectID() {
-        return prrojectID;
-    }
-    /**
-     * Postavlja id projekta
-     * @param prrojectID  id projekta kao Long
-     */
-    public void setPrrojectID(Long prrojectID) {
-        this.prrojectID = prrojectID;
     }
 
     /**
@@ -164,5 +126,17 @@ public class ProjectOperationDTO {
      */
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectOperationDTO{" +
+                "positionID=" + positionID +
+                ", workerID=" + workerID +
+                ", type=" + type +
+                ", start=" + start +
+                ", ended=" + ended +
+                ", active=" + active +
+                '}';
     }
 }
